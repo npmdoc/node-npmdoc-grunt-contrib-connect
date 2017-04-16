@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/gruntjs/grunt-contrib-connect#readme"
-
-    >grunt-contrib-connect (v1.0.2)</a>
+    <a href="https://github.com/gruntjs/grunt-contrib-connect#readme">grunt-contrib-connect (v1.0.2)</a>
 </h1>
 <h4>Start a connect web server</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.grunt-contrib-connect">module grunt-contrib-connect</a><ol>
 
@@ -95,19 +88,19 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">grunt-contrib-connect = function (grunt) {
-  var path = require(&#x27;path&#x27;);
-  var connect = require(&#x27;connect&#x27;);
-  var morgan = require(&#x27;morgan&#x27;);
-  var serveStatic = require(&#x27;serve-static&#x27;);
-  var serveIndex = require(&#x27;serve-index&#x27;);
-  var http = require(&#x27;http&#x27;);
-  var https = require(&#x27;https&#x27;);
-  var http2 = require(&#x27;http2&#x27;);
-  var injectLiveReload = require(&#x27;connect-livereload&#x27;);
-  var open = require(&#x27;opn&#x27;);
-  var portscanner = require(&#x27;portscanner&#x27;);
-  var async = require(&#x27;async&#x27;);
-  var util = require(&#x27;util&#x27;);
+  var path = require('path');
+  var connect = require('connect');
+  var morgan = require('morgan');
+  var serveStatic = require('serve-static');
+  var serveIndex = require('serve-index');
+  var http = require('http');
+  var https = require('https');
+  var http2 = require('http2');
+  var injectLiveReload = require('connect-livereload');
+  var open = require('opn');
+  var portscanner = require('portscanner');
+  var async = require('async');
+  var util = require('util');
 
   var MAX_PORTS = 30; // Maximum available ports to check after the specified port
 
@@ -130,14 +123,14 @@
     return middlewares;
   };
 
-  grunt.registerMultiTask(&#x27;connect&#x27;, &#x27;Start a connect web server.&#x27;, function() {
+  grunt.registerMultiTask('connect', 'Start a connect web server.', function() {
     var done = this.async();
     // Merge task-specific options with these defaults.
     var options = this.options({
-      protocol: &#x27;http&#x27;,
+      protocol: 'http',
       port: 8000,
-      hostname: &#x27;0.0.0.0&#x27;,
-      base: &#x27;.&#x27;,
+      hostname: '0.0.0.0',
+      base: '.',
       directory: null,
       keepalive: false,
       debug: false,
@@ -145,16 +138,16 @@
       open: false,
       useAvailablePort: false,
       onCreateServer: null,
-      // if nothing passed, then is set below &#x27;middleware = createDefaultMiddleware.call(this, connect, options);&#x27;
+      // if nothing passed, then is set below 'middleware = createDefaultMiddleware.call(this, connect, options);'
       middleware: null
     });
 
-    if (options.protocol !== &#x27;http&#x27; &#x26;&#x26; options.protocol !== &#x27;https&#x27; &#x26;&#x26; options.protocol !== &#x27;http2&#x27;) {
-      grunt.fatal(&#x27;protocol option must be \&#x27;http\&#x27;, \&#x27;https\&#x27; or \&#x27;http2\&#x27;&#x27;);
+    if (options.protocol !== 'http' &amp;&amp; options.protocol !== 'https' &amp;&amp; options.protocol !== 'http2') {
+      grunt.fatal('protocol option must be \'http\', \'https\' or \'http2\'');
     }
 
-    if (options.protocol === &#x27;http2&#x27; &#x26;&#x26; /^0.(?:1|2|3|4|5|6|7|8|9|10|11)\./.test(process.versions.node)) {
-      grunt.fatal(&#x27;can\&#x27;t use http2 with node &#x3c; 0.12, see https://github.com/molnarg/node-http2/issues/101&#x27;);
+    if (options.protocol === 'http2' &amp;&amp; /^0.(?:1|2|3|4|5|6|7|8|9|10|11)\./.test(process.versions.node)) {
+      grunt.fatal('can\'t use http2 with node &lt; 0.12, see https://github.com/molnarg/node-http2/issues/101');
     }
 
     // Connect requires the base path to be absolute.
@@ -175,16 +168,16 @@
     }
 
     // Connect will listen to all interfaces if hostname is null.
-    if (options.hostname === &#x27;*&#x27;) {
-      options.hostname = &#x27;&#x27;;
+    if (options.hostname === '*') {
+      options.hostname = '';
     }
 
     // Connect will listen to ephemeral port if asked
-    if (options.port === &#x27;?&#x27;) {
+    if (options.port === '?') {
       options.port = 0;
     }
 
-    if (options.onCreateServer &#x26;&#x26; !Array.isArray(options.onCreateServer)) {
+    if (options.onCreateServer &amp;&amp; !Array.isArray(options.onCreateServer)) {
       options.onCreateServer = [options.onCreateServer];
     }
 
@@ -200,7 +193,7 @@
     } else {
       middleware = createDefaultMiddleware.call(this, connect, options);
 
-      if (typeof options.middleware === &#x27;function&#x27;) {
+      if (typeof options.middleware === 'function') {
         middleware = options.middleware.call(this, connect, options, middleware);
       }
     }
@@ -228,11 +221,11 @@ grunt.initConfig({
   connect: {
     server: {
       options: {
-        protocol: &#x27;https&#x27;, // or &#x27;http2&#x27;
+        protocol: 'https', // or 'http2'
         port: 8443,
-        key: grunt.file.read(&#x27;server.key&#x27;).<span class="apidocCodeKeywordSpan">toString</span>(),
-        cert: grunt.file.read(&#x27;server.crt&#x27;).toString(),
-        ca: grunt.file.read(&#x27;ca.crt&#x27;).toString()
+        key: grunt.file.read('server.key').<span class="apidocCodeKeywordSpan">toString</span>(),
+        cert: grunt.file.read('server.crt').toString(),
+        ca: grunt.file.read('ca.crt').toString()
       },
     },
   },
@@ -250,3 +243,4 @@ grunt.initConfig({
     ]
 </div>
 </div>
+</body></html>
