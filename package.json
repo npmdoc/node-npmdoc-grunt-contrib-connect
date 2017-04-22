@@ -1,6 +1,6 @@
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
-    "description": "api documentation for [grunt-contrib-connect (v1.0.2)](https://github.com/gruntjs/grunt-contrib-connect#readme) [![npm package](https://img.shields.io/npm/v/npmdoc-grunt-contrib-connect.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-grunt-contrib-connect) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-grunt-contrib-connect.svg)](https://travis-ci.org/npmdoc/node-npmdoc-grunt-contrib-connect)",
+    "description": "#### api documentation for  [grunt-contrib-connect (v1.0.2)](https://github.com/gruntjs/grunt-contrib-connect#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-grunt-contrib-connect.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-grunt-contrib-connect) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-grunt-contrib-connect.svg)](https://travis-ci.org/npmdoc/node-npmdoc-grunt-contrib-connect)",
     "devDependencies": {
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "grunt-contrib-connect": "*",
@@ -35,5 +35,5 @@
         "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
         "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
-    "version": "0.0.2"
+    "version": "2017.4.23"
 }
